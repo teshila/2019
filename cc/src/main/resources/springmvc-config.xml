@@ -35,5 +35,5 @@
 	<mvc:annotation-driven/>
 	
 	
-	<bean id="exceptionResolver" class="com.ht.exception.MyExceptionResolver"></bean>
+	<bean id="exceptionResolver" class="com.ly.exception.MyExceptionResolver"></bean>
 </beans>

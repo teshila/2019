@@ -22,7 +22,11 @@
      http://www.springframework.org/schema/task
      http://www.springframework.org/schema/task/spring-task.xsd">
      
-     
+      <import resource="classpath:app-httpclient.xml"/>
+ 	<import resource="classpath:app-mail.xml"/>
+ 
+ 
+ 
 	<!--导入外部配置文件 -->
 	<!-- <context:property-placeholder location="classpath:db-oracle.properties" /> -->
 	<!-- 加载配置文件 -->
@@ -36,41 +40,22 @@
 	</bean>
 
 	<!-- 扫描包 -->
-	<context:component-scan base-package="com.ht" >
+	<context:component-scan base-package="com.ly" >
 	         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
 	</context:component-scan>
 
 	<!-- 数据源 写 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-	 <!-- 基本属性 url、user、password -->
-     <property name="driverClassName" value="${jdbc.driver}" />
-     <property name="url" value="${jdbc.url}" />
-     <property name="username" value="${jdbc.username}" />
-     <property name="password" value="${jdbc.password}" />
-     <!-- 配置监控统计拦截的filters -->
-     <property name="filters" value="stat" />
-     <!-- 配置初始化大小、最小、最大 -->
-     <property name="maxActive" value="20" />
-     <property name="initialSize" value="1" />
-     <property name="minIdle" value="1" />
-
-     <!-- 配置获取连接等待超时的时间 -->
-     <property name="maxWait" value="60000" />     
-
-     <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-     <property name="timeBetweenEvictionRunsMillis" value="60000" />
-
-     <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-     <property name="minEvictableIdleTimeMillis" value="300000" />
-
-     <property name="testWhileIdle" value="true" />
-     <property name="testOnBorrow" value="false" />
-     <property name="testOnReturn" value="false" />
-
-     <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-     <property name="poolPreparedStatements" value="true" />
-     <property name="maxOpenPreparedStatements" value="20" />
-	</bean>
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"   destroy-method="shutdown">
+        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="readOnly" value="false" />
+        <property name="connectionTimeout" value="30000" />
+        <property name="idleTimeout" value="600000" />
+        <property name="maxLifetime" value="1800000" />
+        <property name="maximumPoolSize" value="15" />
+    </bean>
 
 
 
@@ -89,18 +74,18 @@
 	<!-- https://gitee.com/free/Mybatis_PageHelper -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 别名包 -->
-		<property name="typeAliasesPackage" value="com.ht.pojo" />
+		<property name="typeAliasesPackage" value="com.ly.pojo" />
 		<!-- 定义数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:com/ht/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/ly/mapper/*.xml"></property>
 	</bean>
 	
 	
 	<!-- 定义Mapper接口扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描mapper包 -->
-		<property name="basePackage" value="com.ht.dao"/>
+		<property name="basePackage" value="com.ly.dao"/>
 	</bean>
 
 
@@ -132,6 +117,5 @@
 	
 	
 	
- <import resource="classpath:app-httpclient.xml"/>
- <import resource="classpath:app-mail.xml"/>
+
 </beans>
