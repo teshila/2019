@@ -10,14 +10,53 @@
 	<properties>
 		<webVersion>3.1</webVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mycxf>3.2.6</mycxf>
 	</properties>
 
 	<dependencies>
+		<!-- https://www.cnblogs.com/moon521/p/5564504.html?tdsourcetag=s_pcqq_aiomsg -->
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>javax.mail-api</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-api</artifactId> 
+			<version>${mycxf}</version> </dependency> -->
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${mycxf}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-soap</artifactId>
+			<version>${mycxf}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${mycxf}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-security</artifactId>
+			<version>${mycxf}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
 			<version>1.6.2</version>
 		</dependency>
+
+
+		<!-- <dependency> <groupId>javax.mail</groupId> <artifactId>mail</artifactId> 
+			<version>1.4.1</version> </dependency> <dependency> <groupId>javax.activation</groupId> 
+			<artifactId>activation</artifactId> <version>1.0.2</version> </dependency> -->
 
 		<dependency>
 			<groupId>com.zaxxer</groupId>
