@@ -4,15 +4,21 @@ public class Stock {
 
 	private String code;
 	private String name;
-	private String price;
-	private String preclose;
+	private String prevclose;
+	private String current_price;
 	private String maxprice;
 	private String minprice;
-	private String openprice;
+	private String open_price;
 	private String marketType;
 	private String stockPinYin;
+	private String risePrice;
+	//1、深圳创业板股票的代码是：300XXX 的股票    4621
+	//2、而深圳中小板股票的代码是：002XXX 开头的股票  4614
+	//3、上海主板的股票代码是：60XXXX 开头的股票  4353
+	//4、深圳主板的股票代码是：000XXX 开头的股票  4609
 	private Integer count;
-
+	
+	
 	public String getCode() {
 		return code;
 	}
@@ -29,20 +35,20 @@ public class Stock {
 		this.name = name;
 	}
 
-	public String getPrice() {
-		return price;
+	public String getPrevclose() {
+		return prevclose;
 	}
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPrevclose(String prevclose) {
+		this.prevclose = prevclose;
 	}
 
-	public String getPreclose() {
-		return preclose;
+	public String getCurrent_price() {
+		return current_price;
 	}
 
-	public void setPreclose(String preclose) {
-		this.preclose = preclose;
+	public void setCurrent_price(String current_price) {
+		this.current_price = current_price;
 	}
 
 	public String getMaxprice() {
@@ -61,12 +67,12 @@ public class Stock {
 		this.minprice = minprice;
 	}
 
-	public String getOpenprice() {
-		return openprice;
+	public String getOpen_price() {
+		return open_price;
 	}
 
-	public void setOpenprice(String openprice) {
-		this.openprice = openprice;
+	public void setOpen_price(String open_price) {
+		this.open_price = open_price;
 	}
 
 	public String getMarketType() {
@@ -77,6 +83,14 @@ public class Stock {
 		this.marketType = marketType;
 	}
 
+	public String getStockPinYin() {
+		return stockPinYin;
+	}
+
+	public void setStockPinYin(String stockPinYin) {
+		this.stockPinYin = stockPinYin;
+	}
+
 	public Integer getCount() {
 		return count;
 	}
@@ -85,12 +99,18 @@ public class Stock {
 		this.count = count;
 	}
 
-	public String getStockPinYin() {
-		return stockPinYin;
+	public String getRisePrice() {
+		return risePrice;
 	}
 
-	public void setStockPinYin(String stockPinYin) {
-		this.stockPinYin = stockPinYin;
+	public void setRisePrice(String risePrice) {
+		this.risePrice = risePrice;
 	}
+
+	@Override
+	public String toString() {
+		return "Stock [code=" + code + ", name=" + name + ", prevclose=" + prevclose + ", current_price=" + current_price + ", maxprice=" + maxprice + ", minprice=" + minprice + ", open_price=" + open_price + ", marketType=" + marketType + ", stockPinYin=" + stockPinYin + ", risePrice=" + risePrice + ", count=" + count + "]";
+	}
+
 
 }

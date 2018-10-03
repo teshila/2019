@@ -19,8 +19,6 @@ import com.ly.pojo.Holiday;
 @Component
 public class HolidayTask {
 	
-	
-	
 	@Autowired
 	private HolidayDao holidayDao;
 	
@@ -46,20 +44,6 @@ public class HolidayTask {
 		return days;
 	}
 
-	public boolean getIsHoliday() {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-		// System.out.println("当前日期=============>" + df.format(new Date()));
-		Holiday h = holidayDao.getIsHoliday();
-		if (h != null) {
-			// log.log(Level.OFF, "当前节日" + h.getHolidayName() + ",系统不监控 ");
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	
-	
 	
 	//根据当前系统时间，每月15号的10点15分更新一次假日表的节日信息
 		//@Scheduled(cron="0/10 * *  * * ? ")
