@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ye.dao.StockMapper">
+	<select id="getAll" resultType="Stock">
+		select * from stock
+	</select>
+
+	<!-- <update id="update" parameterType="Stock">
+		update stock set
+		name=#{name},price=#{price},minPrice=#{minPrice},maxPrice=#{maxPrice},preClosePrice=#{preClosePrice},pointerPrice=#{pointerPrice},`rase`=#{rase},
+		 pinyin=#{pinyin} 
+		where stockCode =#{stockCode}
+	</update> -->
+
+	<update id="update" parameterType="Stock">
+		update stock
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="null != name and '' != name">
+				name=#{name},
+			</if>
+			<if test="null != price and '' != price">
+				price=#{price},
+			</if>
+			<if test="null != minPrice and '' != minPrice">
+				minPrice=#{minPrice},
+			</if>
+			<if test="null != maxPrice and '' != maxPrice">
+				maxPrice=#{maxPrice},
+			</if>
+			<if test="null != preClosePrice and '' != preClosePrice">
+				preClosePrice=#{preClosePrice},
+			</if>
+			<if test="null != pointerPrice and '' != pointerPrice">
+				pointerPrice=#{pointerPrice},
+			</if>
+			<if test="null != rase and '' != rase">
+				rase=#{rase},
+			</if>
+			<if test="null != pinyin and '' != pinyin">
+				pinyin=#{pinyin},
+			</if>
+		</trim>
+		where stockCode =#{stockCode}
+	</update>
+
+	<insert id="save" parameterType="Stock">
+		INSERT INTO `stock`
+		(`stockCode`, `name`, `price`, `minPrice`, `maxPrice`,
+		`preClosePrice`, `pointerPrice`,`rase`,pinyin) VALUES (#{stockCode},
+		#{name},#{price},#{minPrice}, #{minPrice}, #{preClosePrice}, #{pointerPrice}, #{rase},#{pinyin})
+	</insert>
+
+	<select id="getStock" parameterType="string" resultType="Stock">
+		select * from stock where stockCode =#{stockCode}
+	</select>
+	
+	<!-- https://www.cnblogs.com/tingbogiu/p/5864956.html -->
+	<!-- http://www.jb51.net/article/105978.htm -->
+	<select id="getStockByParam" parameterType="string" resultType="Stock">
+		select * from stock where stockcode LIKE concat(concat('%',#{param}),'%') union all
+		select * from stock where   name LIKE concat(concat('%',#{param}),'%') union all
+		select * from stock where  pinyin like concat('%',#{param},'%')
+	</select>
+	
+	
+	<select id="getNoPinYinStock" resultType="Stock">
+		select * from stock where pinyin is null union all
+		select * from stock where pinyin = ''
+	</select>
+	
+	
+	<select id="getAllByPage" resultType="Stock">
+		select * from stock
+	</select>
+</mapper>

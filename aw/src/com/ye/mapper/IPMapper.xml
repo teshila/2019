@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ye.dao.IPRecordeMapper">
+	<select id="getIpListByIP" resultType="IPAddressRecord">
+		select * from ip_inf  where to_days(addDate) = to_days(now()) and ipadd=#{ipadd}
+	</select>
+	
+	<insert id="save">
+	insert into ip_inf (id,ipadd,ip_region,osname,osversion,browserVersion) values (#{id},#{ipadd},#{ipregion},#{osname},#{osversion},#{browserVersion})
+	</insert>
+</mapper>

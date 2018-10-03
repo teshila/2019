@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- https://blog.csdn.net/zo_184/article/details/52834335 -->
+<mapper namespace="com.ye.dao.GetWebInfoMapper">
+	<select id="getWebInfo" resultType="WebInfo">
+		SELECT * FROM web_inf
+	</select>
+	
+</mapper>

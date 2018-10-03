@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ye.dao.StockDayInfoMapper">
+	<select id="getAll" resultType="StockDayInfo">
+		select * from StockDayInfo
+	</select>
+
+	<insert id="save" parameterType="StockDayInfo">
+		insert into stockDayInfo (stockcode, name,
+		price,minPrice,maxPrice,preClosePrice,rase) values (#{stockCode}, #{name},
+		#{price}, #{minPrice}, #{maxPrice}, #{preClosePrice},#{rase})
+	</insert>
+
+
+	<!-- https://blog.csdn.net/xuanzhangran/article/details/60329357 -->
+	<select id="getStockDayInfo" resultType="StockDayInfo" parameterType="string">
+		 select * from stockdayinfo where date_sub(curdate(), INTERVAL 7 DAY) <![CDATA[ <= ]]> date(addDate) and stockcode=#{stockcode} ORDER BY addDate desc
+	</select>
+	
+	
+	
+</mapper>
