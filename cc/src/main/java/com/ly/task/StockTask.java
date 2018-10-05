@@ -119,7 +119,7 @@ public class StockTask {
 		if (!isHoliday) {
 			if (!flag) {
 
-				List<Stock> list = stockDao.selectStockByParam(null);
+				List<Stock> list = stockDao.selectALlStocks(null);
 				List<Map<String, String>> list2 = pingan.getStockInfoByBatch(list);
 				for (Map map : list2) {
 					//logger.info(map);

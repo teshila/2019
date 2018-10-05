@@ -9,6 +9,8 @@ public interface StockDao {
 
 	public List<Stock> selectStockByParam(Map map);
 
+	public List<Stock> selectALlStocks(Map map);
+
 	public Integer getTotalCount(Map map);
 
 	public void save(Stock stock);

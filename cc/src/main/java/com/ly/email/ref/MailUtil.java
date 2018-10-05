@@ -1,16 +1,11 @@
 package com.ly.email.ref;
  
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Properties;
- 
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
- 
+
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
