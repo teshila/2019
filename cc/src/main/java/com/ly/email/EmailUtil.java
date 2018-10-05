@@ -50,7 +50,7 @@ public class EmailUtil {
     private static Session session;
     private static Properties props = new Properties();
     private static final String HOST = "smtp.qq.com";
-    private static int PORT = 587;
+    private static int PORT = 465;
     private static final String isAUTH = "true";
     private static final String FROM = "1039288191@qq.com";
  

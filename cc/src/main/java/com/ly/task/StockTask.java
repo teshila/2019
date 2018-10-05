@@ -22,6 +22,46 @@ import com.ly.pojo.Holiday;
 import com.ly.pojo.Stock;
 import com.ly.pojo.StockDayDealsRecord;
 
+
+/*
+
+
+DROP TRIGGER IF EXISTS upd_check02;
+CREATE TRIGGER upd_check02 BEFORE update ON stock
+ FOR EACH ROW
+BEGIN
+if new.`code` LIKE '000%' THEN
+set new.marketType ='4609';
+elseif new.`code` LIKE '002%' THEN
+set new.marketType ='4614';
+elseif new.`code` LIKE '300%' THEN
+set new.marketType ='4621';
+elseif new.`code` LIKE '60%' THEN
+set new.marketType ='4353';
+end if;
+end
+
+
+
+-----新增
+DROP TRIGGER IF EXISTS insert_check;
+CREATE TRIGGER insert_check BEFORE insert ON stock
+ FOR EACH ROW
+BEGIN
+if new.`code` LIKE '000%' THEN
+set new.marketType ='4609';
+elseif new.`code` LIKE '002%' THEN
+set new.marketType ='4614';
+elseif new.`code` LIKE '300%' THEN
+set new.marketType ='4621';
+elseif new.`code` LIKE '60%' THEN
+set new.marketType ='4353';
+end if;
+end
+
+
+*/
+
 @Component
 public class StockTask {
 	

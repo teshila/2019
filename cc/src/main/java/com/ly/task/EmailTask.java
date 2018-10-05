@@ -19,7 +19,7 @@ public class EmailTask {
 
 	private static Logger logger = Logger.getLogger(EmailTask.class); // 获取logger实例
 	
-	@Scheduled(cron = "0 0/8  *  * * ? ") // 每5秒执行一次
+	@Scheduled(cron = "0 0/3  *  * * ? ") // 每5秒执行一次
 	public void task01() throws MessagingException, FileNotFoundException, IOException {
 		StringBuffer emailBf = new StringBuffer();
 		logger.info("普通Info信息");
