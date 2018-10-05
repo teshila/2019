@@ -1,0 +1,25 @@
+package com.ly.task;
+
+import javax.mail.MessagingException;
+
+import org.apache.log4j.Logger;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class JobTask {
+
+	private static Logger logger = Logger.getLogger(JobTask.class); // 获取logger实例
+
+	@Scheduled(cron = "0/15 *  *  * * ? ") // 每5秒执行一次
+	public void task01() throws MessagingException {
+		StringBuffer emailBf = new StringBuffer();
+		logger.info("普通Info信息");
+		// logger.error("报错信息", new IllegalArgumentException("非法参数"));
+
+
+		
+		System.out.println("111");
+	}
+
+}

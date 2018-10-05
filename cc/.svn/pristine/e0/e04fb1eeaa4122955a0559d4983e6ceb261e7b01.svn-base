@@ -1,0 +1,38 @@
+package com.ly.task;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class JobTask {
+
+	@Autowired
+	private JavaMailSenderImpl mailSender;
+
+	private static Logger logger = Logger.getLogger(JobTask.class); // 获取logger实例
+
+	@Scheduled(cron = "0/20 *  *  * * ? ") // 每5秒执行一次
+	public void task01() throws MessagingException {
+		StringBuffer emailBf = new StringBuffer();
+		logger.info("普通Info信息");
+		// logger.error("报错信息", new IllegalArgumentException("非法参数"));
+
+		MimeMessage mimeMsg = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(mimeMsg, false, "utf-8");
+		mimeMsg.setContent("333", "text/html");
+		helper.setTo("1039288191@qq.com");
+		helper.setSubject("333");
+		helper.setFrom("1039288191@qq.com");
+		mailSender.send(mimeMsg);
+
+		System.out.println("111");
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.ly.email;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+
+public class MyEmailSender {
+
+	@Autowired
+	private JavaMailSender mailSender;
+}
