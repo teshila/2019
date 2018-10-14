@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>监控宝</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<link rel="stylesheet" type="text/css" href="statics/bt/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="statics/css/global.css">
+<script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+<script src="statics/bt/js/bootstrap.min.js"></script>
+
+<style>
+tr.danger td{
+	color: red;
+}
+
+tr.info td{
+	color: #000;
+}
+
+tr.success td{
+	color: green;
+}
+</style>
+</head>
+<body>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>代码</th>
+				<th>名称</th>
+				<th>当前价</th>
+				<th>昨收</th>
+				<th>最低</th>
+			</tr>
+		</thead>
+		<tbody id="lists">
+		</tbody>
+	</table>
+
+	<script type="text/javascript">
+	
+		$(function() {
+	
+			setInterval(function() {
+				loadingData();
+				console.log(1)
+			}, 1000)
+	
+		})
+	
+	
+	
+	
+	
+		function loadingData() {
+			$("#lists").empty();
+			var _html = "";
+			$.ajax({
+				url : "stock/moImport",
+				dataType : "json",
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						var item = data[i].current_price - data[i].prevclose;
+						console.log(item)
+						if (item > 0) {
+							_html += "<tr class='danger'><td>" + data[i].code + "</td><td>" + data[i].name + "</td><td>" + data[i].current_price + "</td><td>" + data[i].prevclose + "</td><td>" + data[i].minprice + "</td></tr>";
+						} else if (item == 0) {
+							_html += "<tr class='info'><td>" + data[i].code + "</td><td>" + data[i].name + "</td><td>" + data[i].current_price + "</td><td>" + data[i].prevclose + "</td><td>" + data[i].minprice + "</td></tr>";
+						} else {
+							_html += "<tr class='success'><td>" + data[i].code + "</td><td>" + data[i].name + "</td><td>" + data[i].current_price + "</td><td>" + data[i].prevclose + "</td><td>" + data[i].minprice + "</td></tr>";
+						}
+	
+					}
+	
+					$("#lists").append(_html)
+	
+				}
+			});
+	
+	
+		}
+	</script>
+</body>
+</html>

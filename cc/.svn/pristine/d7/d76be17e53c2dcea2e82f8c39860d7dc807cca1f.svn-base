@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="statics/plugins/jquery.mobile-1.4.5.min.css">
+<script src="statics/js/jquery.min.js"></script>
+<script src="statics/plugins/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>欢迎来到我的主页</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">首页</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">页面二</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <table data-role="table" data-mode="columntoggle" class="ui-responsive" id="myTable">
+      <thead>
+        <tr>
+          <th data-priority="6">CustomerID</th>
+          <th>CustomerName</th>
+          <th data-priority="1">ContactName</th>
+          <th data-priority="2">Address</th>
+          <th data-priority="3">City</th>
+          <th data-priority="4">PostalCode</th>
+          <th data-priority="5">Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Obere Str. 57</td>
+          <td>Berlin</td>
+          <td>12209</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Antonio Moreno Taquer</td>
+          <td>Antonio Moreno</td>
+          <td>Mataderos 2312</td>
+          <td>Mico D.F.</td>
+          <td>05023</td>
+          <td>Mexico</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Around the Horn</td>
+          <td>Thomas Hardy</td>
+          <td>120 Hanover Sq.</td>
+          <td>London</td>
+          <td>WA1 1DP</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Berglunds snabbk</td>
+          <td>Christina Berglund</td>
+          <td>Berguvsven 8</td>
+          <td>Lule</td>
+          <td>S-958 22</td>
+          <td>Sweden</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div data-role="footer">
+    <h1>我的页脚</h1>
+  </div> 
+</div> 
+
+<div data-role="page" id="pagetwo">
+  <div data-role="header">
+    <h1>欢迎来到我的主页</h1>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#pageone" data-icon="home">首页</a></li>
+        <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="arrow-r">页面二</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>该页面的按钮也会被突出显示，归功于 ui-btn-active 类。</p> 
+    <p>如果返回首页，您会发现页面将保持状态，归功于 ui-state-persist 类。</p>
+  </div>
+
+  <div data-role="footer">
+    <h1>我的页脚</h1>
+  </div>
+</div> 
+
+</body>
+</html>
