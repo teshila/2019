@@ -1,0 +1,51 @@
+package com.ly.pojo;
+
+public class Comment {
+
+	private String cid;
+	private String commenter;
+	private String comtents;
+	private String addTime;
+	private Integer count;
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public String getCid() {
+		return cid;
+	}
+
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
+	public String getCommenter() {
+		return commenter;
+	}
+
+	public void setCommenter(String commenter) {
+		this.commenter = commenter;
+	}
+
+	public String getComtents() {
+		return comtents;
+	}
+
+	public void setComtents(String comtents) {
+		this.comtents = comtents;
+	}
+
+	public String getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(String addTime) {
+		this.addTime = addTime;
+	}
+
+}

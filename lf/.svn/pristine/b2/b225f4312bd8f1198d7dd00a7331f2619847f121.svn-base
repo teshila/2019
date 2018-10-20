@@ -1,0 +1,50 @@
+package com.ly.pojo;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+public class Comment {
+
+	private String cid;
+	private String commenter;
+	private String comtents;
+	private String addTime;
+
+	public String getCid() {
+		return cid;
+	}
+
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
+	public String getCommenter() {
+		return commenter;
+	}
+
+	public void setCommenter(String commenter) {
+		this.commenter = commenter;
+	}
+
+	public String getComtents() {
+		return comtents;
+	}
+
+	public void setComtents(String comtents) {
+		this.comtents = comtents;
+	}
+
+	public String getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(String addTime) {
+		this.addTime = addTime;
+	}
+
+}
