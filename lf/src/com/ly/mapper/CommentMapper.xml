@@ -19,17 +19,17 @@
 
 		insert into comment
 		(
-		`cid`,
+		`comId`,
 		`comments`,
 		userId,
 		`contentId`
 		)
 		values
 		(
-		#{cid, jdbcType=VARCHAR},
+		#{comId, jdbcType=VARCHAR},
 		#{comments,jdbcType=VARCHAR},
 		#{user.uid,jdbcType=VARCHAR},
-		#{content.contentId,jdbcType=VARCHAR}
+		#{content.cid,jdbcType=VARCHAR}
 		)
 	</insert>
 </mapper>

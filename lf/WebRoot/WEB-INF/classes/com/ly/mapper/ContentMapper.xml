@@ -36,25 +36,52 @@
 		<result column="contents" property="contents" />
 		<result column="publisher" property="publisher" />
 		<result column="title" property="title" />
-		<collection property="comments" ofType="Comment" select="getComments"
+		<collection property="commentList" ofType="Comment" select="getComments"
+			column="cid">
+		</collection>
+
+		<collection property="reduList" ofType="ReDu" select="getReduLists"
 			column="cid">
 		</collection>
 	</resultMap>
 
 
-	<select id="getComments" parameterType="int" resultMap="getUserInfosMap">
+	<select id="getComments" parameterType="String" resultMap="getUserInfosMap">
 		select
 		*
 		from comment s left join user u on u.uid = s.userid
-		where
-		contentId =
-		#{mid} order by addtime desc
+		<where>
+			contentId =
+			#{mid,jdbcType=VARCHAR} order by addtime desc
+		</where>
 	</select>
 
 
 
+	<select id="getReduLists" parameterType="String" resultMap="getReduListsInfosMap">
+		select reduContent from content c left join redu r on c.cid = r.cid
+		<where>
+			c.cid = #{mid,jdbcType=VARCHAR} order by addtime desc
+		</where>
+	</select>
+
+	<resultMap type="reDu" id="getReduListsInfosMap">
+		<id column="reduId" property="reduId" />
+		<result column="reduContent" property="reduContent" />
+		<result column="addTime" property="addTime" />
+
+		<association property="user" javaType="User">
+			<id column="uid" property="uid" />
+			<result column="name" property="name" />
+			<result column="pic" property="pic" />
+			<result column="nickName" property="nickname" />
+		</association>
+	</resultMap>
+
+
+
 	<resultMap type="comment" id="getUserInfosMap">
-		<id column="cid" property="cid" />
+		<id column="comId" property="comId" />
 		<result column="comments" property="comments" />
 		<result column="addTime" property="addTime" />
 
@@ -65,6 +92,17 @@
 			<result column="nickName" property="nickname" />
 		</association>
 	</resultMap>
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<insert id="save">
@@ -79,10 +117,13 @@
 			<trim prefix="set" suffixOverrides=",">
 				<if test="contents != null">`contents` = #{contents, jdbcType=VARCHAR},</if>
 				<if test="title != null">`title` = #{title,jdbcType=VARCHAR},</if>
-				<if test="user != null">userId = #{user.id,jdbcType=VARCHAR},</if>
+				<if test="user != null">userId = #{user.uid,jdbcType=VARCHAR},</if>
+				<if test="redu != null">redu = #{redu,jdbcType=INTEGER},</if>
+				<if test="totalCommentSum != null">totalCommentSum = #{totalCommentSum,jdbcType=INTEGER},
+				</if>
 			</trim>
 			<where>
-			 `cid` = #{cid}
+				`cid` = #{cid,jdbcType=VARCHAR}
 			</where>
 		</if>
 		<if test="count == 0">
@@ -97,10 +138,10 @@
 			)
 			values
 			(
-			 #{cid,jdbcType=VARCHAR},
+			#{cid,jdbcType=VARCHAR},
 			#{title,jdbcType=VARCHAR},
 			#{contents, jdbcType=VARCHAR},
-			#{user.id,jdbcType=VARCHAR},
+			#{user.uid,jdbcType=VARCHAR},
 			#{redu,jdbcType=VARCHAR},
 			#{totalCommentSum,jdbcType=VARCHAR}
 			)

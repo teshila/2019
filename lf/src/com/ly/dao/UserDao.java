@@ -7,7 +7,7 @@ import com.ly.pojo.User;
 
 public interface UserDao {
 
-	public int save(Map map);
+	public int save(User user);
 
 	public User find(Map map);
 

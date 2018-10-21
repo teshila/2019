@@ -31,12 +31,14 @@
 		<if test="count == 0">
 			insert into User
 			(
+			`uid`,
 			`name`,
 			`phone`,
 			pic,pwd,qq,weixin
 			)
 			values
 			(
+			#{uid, jdbcType=VARCHAR},
 			#{name, jdbcType=VARCHAR},
 			#{phone,jdbcType=VARCHAR},
 			#{pic,jdbcType=VARCHAR},

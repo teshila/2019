@@ -6,6 +6,7 @@ public class User {
 	private String name;
 	private String pwd;
 	private String pic;
+	private String picBig;
 	private String regTime;
 	private String qq;
 	private String weixin;
@@ -13,6 +14,8 @@ public class User {
 	private String nickname;
 	private Integer count;
 
+	
+	
 	public String getUid() {
 		return uid;
 	}
@@ -91,6 +94,14 @@ public class User {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+	public String getPicBig() {
+		return picBig;
+	}
+
+	public void setPicBig(String picBig) {
+		this.picBig = picBig;
 	}
 
 }

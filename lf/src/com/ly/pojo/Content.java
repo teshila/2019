@@ -1,7 +1,6 @@
 package com.ly.pojo;
 
 import java.util.List;
-import java.util.Set;
 
 public class Content {
 
@@ -10,7 +9,8 @@ public class Content {
 	private String addTime;
 	private String contents;
 	private User user;
-	private List<Comment> comments;
+	private List<Comment> commentList;
+	private List<ReDu> reduList;
 	private Integer redu;
 	private Integer totalCommentSum;
 	private Integer count;
@@ -47,12 +47,12 @@ public class Content {
 		this.contents = contents;
 	}
 
-	public List<Comment> getComments() {
-		return comments;
+	public List<Comment> getCommentList() {
+		return commentList;
 	}
 
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	public void setCommentList(List<Comment> commentList) {
+		this.commentList = commentList;
 	}
 
 	public Integer getCount() {
@@ -85,6 +85,14 @@ public class Content {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<ReDu> getReduList() {
+		return reduList;
+	}
+
+	public void setReduList(List<ReDu> reduList) {
+		this.reduList = reduList;
 	}
 
 }

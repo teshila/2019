@@ -2,7 +2,7 @@ package com.ly.pojo;
 
 public class Comment {
 
-	private String cid;
+	private String comId;
 	private String comments;
 	private String addTime;
 	private User user;
@@ -17,12 +17,13 @@ public class Comment {
 		this.count = count;
 	}
 
-	public String getCid() {
-		return cid;
+
+	public String getComId() {
+		return comId;
 	}
 
-	public void setCid(String cid) {
-		this.cid = cid;
+	public void setComId(String comId) {
+		this.comId = comId;
 	}
 
 	public String getComments() {
