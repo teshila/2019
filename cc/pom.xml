@@ -14,6 +14,29 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
+
 		<!-- https://www.cnblogs.com/moon521/p/5564504.html?tdsourcetag=s_pcqq_aiomsg -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -98,11 +121,6 @@
 			<version>1.7.21</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>4.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.jsoup</groupId>
